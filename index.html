@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>CaRMS Carbon Calculator </title>
+        <meta name="description" content="Calculating the Environmental Impact of the CaRMS Tour"/>
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="author" content="Kevin E Liang" />
+        <meta name="HandheldFriendly" content="True"/>
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+        <link rel="icon" type="image/png" href="images/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="styles/theme.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="src/jquery.js" type="text/javascript"></script>
+        <script src="src/bootstrap.min.js" type="text/javascript"></script>
+        <!-- jquery ui for dragging locations --> 
+        <script src="src/jquery-ui.js" type="text/javascript"></script>
+    </head>
+    <!-- emissions -->
+    <body id="top" itemtype="http://schema.org/WebPage">
+        <div id ="introduction" class="container">
+            <h1>What is the Environmental Impact of your CaRMS Tour?</h1>
+            <h5>This calculator assesses the emissions on from flights taken during the Canadian residency interview tour</h5>
+        </div>
+        <div id="user-input">
+            <div id="app" class="mileage mt-3">
+                <svg class="mileage-map" ref="map" viewBox="-130 -900 1260 1070">
+                <g class="mileage-map__states" ref="provinces"></g>
+                <g ref="airports">
+                <g class="airport" :class="{ 'airport--current' : airport.current }" v-for="airport in airports">
+                   <circle r="3" :cx="airport.x" :cy="airport.y" class="airport__marker" />
+                <circle r="16" :cx="airport.x" :cy="airport.y" class="airport__range" />
+                <!--                <circle r="16" :cx="airport.x" :cy="airport.y" class="airport__range"
+                                        @mousemove="airportSnap($event, airport)"
+                                        @mouseup="airportClick($event, airport)"
+                                        @mouseleave.self="airportLeave($event, airport)" />-->
+                </g>
+                </g>
+
+                <path class="marker-connector" :d="markerConnect()"></path>
+
+                <g class="airplane" ref="airplane">
+                <path class="airplane__icon" d="M21 15.984l-8.016-2.484v5.484l2.016 1.5v1.5l-3.516-0.984-3.469 0.984v-1.5l1.969-1.5v-5.484l-7.969 2.484v-1.969l7.969-5.016v-5.484c0-0.844 0.656-1.5 1.5-1.5s1.5 0.656 1.5 1.5v5.484l8.016 5.016v1.969z" transform="translate(-8,-15) scale(1.2)"></path>
+                </g>
+
+                <g v-for="marker in markers" @mousedown="markerSet($event,marker)" class="marker" :class="{ 'marker--current' : marker.current }" :transform="'translate('+marker.x+','+marker.y+')'">
+                   <path fill="{{marker.fill}}" d="M0 0l28.592-28.592c15.78-15.78 15.908-41.24.128-57.02a40.424 40.424 0 0 0-57.124 57.2z"></path>
+                <transition name="marker-fade">
+                    <text v-if="marker.airport" x="0" y="-42" text-anchor="middle" v-text="marker.airport.LocationID"></text>
+                </transition>
+                </g>
+                </svg>
+            </div>
+
+            <form method="post" action="" id="sort-it" onsubmit="return false;">
+                <h2 class ="control-label mb-5" for="autocomplete">
+                    I'm starting my CaRMS Tour from
+                </h2>
+                <div class="form-group">
+                    <input id="autocomplete" class="form-control" type="text" name="dep-city" placeholder="City or Airport Name ..." autocomplete="off" autofocus="on" />
+                </div>
+                <div class="form-group">
+                    <select id="journeytype" class="form-control" name="journeytype" style="display: none;">
+                        <option value="1" selected="">Flying</option>
+                        <option value="0">Not Flying</option>
+                    </select>
+                </div>
+                <button type="button" class="btn btn-primary" id="addbutton">Add</button>
+                <ul id="incomplete-tasks" class="mt-5"></ul>
+                <div class="clearfix"></div>
+                <button type="button" class="btn btn-primary mt-4" id="calculate" style="display: none;">Calculate My Emissions</button>
+            </form>
+        </div>
+        <div class="clearfix"></div>
+        <div id="emission-data" style="display: none;">
+            <div class="container p-5">
+                <h2>Possible Emission Calculations</h2>
+                <h6>Source: Estimates based on economy class seats </h6>
+
+                <div class="container">
+                    <div class ="row">
+                        <div class ="col-sm">
+                        <h1 class="mileage__calculations mt-5" id="numberofcities">
+                            <span id = "totalCities" data-city=""></span><small> Cities Visited</small>
+                        </h1>
+                        </div>
+
+                        <div class ="col-sm">
+                        <h1 class="mileage__calculations mt-5" id="distancebetween">
+                            <span id = "totalDistance" data-distance=""></span>
+                            <small> Km Travelled</small>
+                        </h1>
+                        </div>
+                        <div class="col-sm">
+                        <h1 class="mileage__calculations mt-5" id="co2emission">
+                            <span id = "totalEmission" data-emission=""></span><small> Kg CO2 Emitted</small>
+                        </h1>
+                        </div>
+                    </div>
+                </div>
+                <div class ="container"> 
+                    <div class="row">
+                        <div style="margin-top:30px" class="col">This is the equivalent of:</div>
+                        <div class="w-100"></div>
+                        <div style="margin-top:30px" class="col">This will result in the loss of:</div>
+                    </div>
+                </div>
+
+            <!--  <form method="post" action="" class="mt-5" id="form-submit">
+                    <div class="form-group">
+                        <input id="university" class="form-control" type="text" name="university" placeholder="University Name" autocomplete="off" />
+                 
+                    <button type="button" class="btn btn-primary" id="submit">Submit</button>
+                </form>
+            --> 
+            <div class="container" style="background-color:#2b5277">
+                <h4 style="margin-top:60px" style= "padding-top:30px">Please help us understand the cost of the entire CaRMS tour</h4>
+                <h6>Submit your data </h6>
+                <form class="form mt-5" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSejY5ykx9XWxh_UxnaaAFWOpVQJP2Q2bwVNcnINXDnpMMKXRg/formResponse" target="_self">
+                    <div class="form-group">
+                        <label>I am from</label>
+                        <input id="schooloforigin" name="entry.735375071" type="text" placeholder=" Medical School Name"/>
+                        <label>I am applying to the following specialty(ies)</label>
+                        <input id="specialties" name="entry.1179383716" placeholder=" Specialty(ies)" type="text" />
+                        
+                        <input id="city0" name="entry.599602472" style="display:none" type="text" />
+                        <input id="city1" name="entry.589350821" style="display:none" type="text" />
+                        <input id="city2" name="entry.1150841774" style="display:none" type="text" />
+                        <input id="city3" name="entry.1124877950" style="display:none" type="text" />
+                        <input id="city4" name="entry.122035344" style="display:none" type="text" />
+                        <input id="city5" name="entry.550683007" style="display:none" type="text" />
+                        <input id="city6" name="entry.1732348661" style="display:none" type="text" />
+                        <input id="city7" name="entry.710850222" style="display:none" type="text" />
+                        <input id="city8" name="entry.1715087234" style="display:none" type="text" />
+                        <input id="city9" name="entry.1946291462" style="display:none" type="text" />
+                        
+                        <input id="city10" name="entry.386767754" style="display:none" type="text" />
+                        <input id="city11" name="entry.251875721" style="display:none" type="text" />
+                        <input id="city12" name="entry.757240061" style="display:none" type="text" />
+                        <input id="city13" name="entry.1337219740" style="display:none" type="text" />
+                        <input id="city14" name="entry.417269170" style="display:none" type="text" />
+                        <input id="city15" name="entry.852167020" style="display:none" type="text" />
+                        <input id="city16" name="entry.493625509" style="display:none" type="text" />
+                        <input id="city17" name="entry.1446717457" style="display:none" type="text" />
+                        <input id="city18" name="entry.802516056" style="display:none" type="text" />
+                        <input id="city19" name="entry.1117702907" style="display:none" type="text" />
+                        
+                        <input id="city20" name="entry.103858432" style="display:none" type="text" />
+                        <input id="city21" name="entry.469194213" style="display:none" type="text" />
+                        <input id="city22" name="entry.806626741" style="display:none" type="text" />
+                        <input id="city23" name="entry.741291110" style="display:none" type="text" />
+                        <input id="city24" name="entry.333075389" style="display:none" type="text" />
+                        <input id="city25" name="entry.1248216763" style="display:none" type="text" />
+                        <input id="city26" name="entry.1305126104" style="display:none" type="text" />
+                        <input id="city27" name="entry.330434047" style="display:none" type="text" />
+                        <input id="city28" name="entry.518662113" style="display:none" type="text" />
+                        <input id="city29" name="entry.324442649" style="display:none" type="text" />
+                    
+                    </div>
+                        <input type="submit" value="Submit"/>
+                </form>
+            </div>
+
+            </div>
+        </div>
+       
+
+        <script src='src/airports.js'></script>
+        <!-- map js --> 
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js'></script>
+        <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js'></script>
+
+        <!-- to-do list js --> 
+        <script  src="src/todo.js"></script>
+        <script src = "src/emissions.js"></script>
+
+        <script  src="src/map.js"></script>
+        <!--form js --> 
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js'></script>
+        <script src='https://unpkg.com/fuse.js@2.5.0/src/fuse.min.js'></script>
+        <script type="text/javascript" src="src/autocomplete.js"></script>
+        <!-- animate form --> 
+        <script src='https://animejs.com/lib/anime.min.js'></script>
+        <script src="src/animate.js"></script>
+
+        <!-- results --> 
+        <script src="src/results.js"></script>
+        
+
+    </body>
+</html>
