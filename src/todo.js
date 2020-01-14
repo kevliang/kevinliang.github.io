@@ -164,9 +164,7 @@ calculateButton.addEventListener("click", function () {
     $("html, body").stop().animate({
         scrollTop: $("#emission-data").position().top
     }, 500);
-    animateValue(objectEmission, 0, objectEmission.innerHTML,1500);
-    animateValue(objectDistance, 0, objectDistance.innerHTML, 1500);
-    animateValue(objectCity, 0, objectCity.innerHTML, 500 );
+    runInfographic();
 });
 
 function updateFormData(){
