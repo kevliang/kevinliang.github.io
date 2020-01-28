@@ -14,8 +14,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
         <link rel="stylesheet" type="text/css" href="styles/results.css">
-
-       <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <link rel="stylesheet" type="text/css" href="styles/popup.css">
+       
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <!-- jquery ui for dragging locations --> 
@@ -23,6 +24,127 @@
     </head>
     <!-- emissions -->
     <body id="top" itemtype="http://schema.org/WebPage">
+    <div class="row pop-up" >
+    <div class="box">
+           
+            <p>
+            <img id="ubclogo" src="images/UBC.jpg" alt="UBC logo" style="float:right; width:50px">
+                Study Name: Assessing the Environmental Impact of the Canadian Medical Residency Interview Tour
+                 <br> Consent Cover Letter      
+            </p>
+            <hr>
+            <h5 id="researcher-information">
+            Ethics ID# HXX-XXXXX <br> <br>
+            Principal Investigator - <br> 
+            Name: Dr. Simon Donner <br>
+            Affiliation: Department of Geography, University of British Columbia <br>
+            Email: simon.donner@ubc.ca <br>
+            Telephone Number: 604-822-6959 <br>
+            <br>
+            Co-Investigator -  <br> 
+            Name: Kevin Liang, B.Sc <br>
+            Affiliation: Faculty of Medicine, University of British Columbia  <br>
+            Email: kevin.liang@alumni.ubc.ca <br> 
+            Telephone Number: 1-514-775-3295 <br>
+            </h5>
+            <hr>
+
+            <h5 class="section-heading"> Why are we doing this study? </h5>
+            <h6 class="section-information"> You are invited to participate in a research study entitled “Assessing the Environmental Impact of the Canadian Medical Residency Interview Tour”. This study is being done by Dr. Simon Donner, a researcher from the Department of Geography, University of British Columbia (UBC), and Kevin Liang a fourth-year medical student from UBC. You are invited because of your participation in the first iteration of the 2019-2020 medical residency interview tour (commonly known as CaRMS©). </h6> 
+
+            <h6 class="section-information"> The purpose of this research study is to quantify CO2 emissions generated from air travel related to the interview tour. We believe this national survey of medical students will give us a better understanding of the environmental impact of this process. </h6> <br>
+
+           <h5 class="section-heading"> Who can participate in this study? </h5>
+           <h6 class="section-information"> The study population comprises of graduating students from the 17 Canadian medical school who are taking part in the first iteration of the 2019-2020 residency interview tour. There is no exclusion criterion.  </h6> <br>
+
+           <h5 class="section-heading"> What happens if you say “Yes, I want to be in the study”? </h5>
+           <h6 class="section-information"> If you decide to participate in this study, you will be linked to an online survey lasting approximately 10 minutes that can be completed at a single timepoint.  At the start of the survey, you will see a field to input the city where you started your residency interview tour. You can enter subsequent cities you travelled to. Please indicate whether you travelled to these cities by airplane using the drop-down menu. After completion, please click on the “Calculate My Impact” button. The webpage will then guide you to a section that shows
+           <br>
+           <h6 style="margin-left:25px" class="section-information"> (1) The number of cities you visited during the process </h6> 
+           <h6 style="margin-left:25px" class="section-information"> (2) The total distance travelled (reported in kms) </h6> 
+           <h6 style="margin-left:25px" class="section-information"> (3) The total CO2 emitted (reported in tonnes of CO2e) </h6>
+            <h6 class="section-information"> Our calculations assume that each trip is economy class. To calculate distance between individual departure city and destination city, we use the greater circle distance, which is the shortest distance between two points on a sphere. To calculate emissions, we use a conversion factor derived from the UK Department for Business, Energy and Industrial Strategy (BEIS) (Table 1).  </h6> <span>
+
+            <table id="emission-data-table" align="center" style="color:dimgray; font-family:arial; font-size:12px; margin:5px;">
+            <caption style="font-size:8px">Table 1:  Emission (Kg CO2e) per passenger km, based on flight distance (BEIS) </caption>
+            <tr>
+                <th></th>
+                <th>Short-haul Flights <br> (<463 km)</th>
+                <th>Medium-haul Flights <br> (>463 km & <3700 km)</th>
+                <th>Long-haul Flights <br> (>3700 km) </th>
+            </tr>
+            <tr>
+                <td data-th="Movie Title">Economy Class Trips</td>
+                <td data-th="Genre">0.25493 kg CO2e</td>
+                <td data-th="Year">0.15573 kg CO2e/km</td>
+                <td data-th="Gross">0.14981 kg CO2e/km</td>
+            </tr>
+          </table>
+
+          <h6 class="section-information"> After seeing these results, you will have the option of submitting your data through a survey platform hosted by Google Form, embedded on the website. You can enter the name of your medical school and the specialty(ies) that you applied to. Only when you hit the “submit” button will the following information be collected: 
+          <h6 style="margin-left:25px" class="section-information">  1.  The cities you travelled to on your residency interview tour </h6>
+          <h6 style="margin-left:25px" class="section-information"> 2.  Your medical school </h6>
+          <h6 style="margin-left:25px" class="section-information">  3.  The specialty(ies) you applied to  </h6>
+
+         <h6 class="section-information"> If you wish to withdraw from the study at any point while completing the survey, simply close your web browser, and your data will not be collected.</h6>
+         </h6><br>
+
+        <h5 class="section-heading"> Will being in this research study help you in any way?  </h5>
+        <h6 class="section-information"> You may not directly benefit from this research; however, data collected from the study will allow us to understand the environmental impact of the residency tour. </h6>
+        <br>
+
+        <h5 class="section-heading">What are the possible risks or inconveniences of participating? </h5>
+        <h6 class="section-information"> We believe there are minimal risks associated with this research study; however, a risk of breach of confidentiality always exists and we have taken the steps to minimize this risk as outlined in the section below entitled “How will your personal information be protected?”. </h6>
+        <h6 class="section-information">You are free to decline to answer any questions you do not wish to answer or stop participating at any time by closing your browser. If you close your browser before getting to the end of the survey or you do not click the ‘submit’ button at the end of the survey your information collected up to that point will not be collected nor used.    </h6> <br>
+
+        <h5 class="section-heading">How will your personal information be protected? </h5>
+        <h6 class="section-information"> To the best of our ability your answers in this study will remain confidential.  Only your medical school, the cities you travelled to during the residency tour, and the speciality(ies) you applied to will be collected. This may be a limit to your confidentiality, as we believe that it is possible for participants to be identified non-directly. However, only the research investigators (Dr. Simon Donner and Kevin Liang) will have access to this information.  </h6>
+        <br> 
+
+        <h6 style="margin-left:50px" class="section-heading">Data Management, Storage, and Destruction </h6>
+
+        <h6  style="margin-left:50px" class="section-information"> The data collected on you for this research project will be stored in an encrypted server hosted by Google Form, a third-party survey platform.  The Google Form is attached only to the researchers’ UBC emails. These servers are located outside of Canada (United States and Europe). If you choose to participate in the survey, you understand that your responses to the survey questions may be stored and accessed in the USA. As a result, it is subject to U.S. laws, in particular, the US Patriot Act which allows authorities access to the records of internet service providers. The security and privacy policy for the web survey company can be found at the following link:  <a  href="https://policies.google.com/privacy">https://policies.google.com/privacy.</a></h6>
+
+         <h6  style="margin-left:50px" class="section-information"> The data stored through Google Form server is both password-protected and encrypted. To further protect the data, we will remove any direct personal information provided (e.g. Name, Date of Birth). Google Form employs multiple layers of security to make sure that data remains private and secure. This data is only accessible by team members Kevin Liang and Dr. Simon Donner and will only be accessed in Canada.  The data will be stored for 5 years from the date of study completion (June 30th, 2020) and will be completely deleted from the drive subsequently by Kevin Liang. All Google Form accounts are protected by password-access, and Google employees do not have access the responses. All responses will be anonymous, Google Form does not have the option to collect your IP addresses.  </h6> <br>
+
+        <h6 style="margin-left:50px" class="section-heading"> Future Use of Data </h6>
+        <h6  style="margin-left:50px" class="section-information"> Your responses will be used to estimate the total amount of carbon dioxide emitted by medical students participating in this interview process. Your data will not be used for further analysis at the conclusion of the study.  </h6> <br>
+
+         <h6 style="margin-left:50px" class="section-heading"> Sharing of Study Results </h6>
+
+        <h6  style="margin-left:50px" class="section-information">  The results of this study will be reported in a research piece and may be published in journal articles and reports. All report findings will be anonymous and cannot be linked back to you. A summary of the study results will be provided to you upon request. Please see above for contact information.  </h6>  <br>
+
+       <h5  class="section-heading"> Will You be Paid for Taking Part? </h5>
+       <h6  class="section-information"> You will not be provided with any payments or coverage of costs for participating in this study. </h6> <br>
+
+        <h5  class="section-heading">Who Should You Contact if You Need More Information or Help? </h5>
+        <h6  class="section-information"> The contact information for the Principal Investigator is provided in the first section of this letter. If you have any concerns or complaints about your rights as a research participant and/or your experiences while participating in this study, contact the Research Participant Complaint Line in the UBC Office of Research Ethics at 604-822-8598 or if long distance e-mail RSIL@ors.ubc.ca or call toll free 1-877-822-8598. </h6> <br>
+
+         <h5  class="section-heading"> Project Funding or Conflict of Interest </h5>
+         <h6  class="section-information"> None Declared </h6> <br>
+
+
+        <h5  class="section-heading"> CONSENT </h5>
+        <h6  class="section-information"> Participation in research is completely voluntary and you can withdraw your consent at any point up to clicking the “submit” button at the end of the survey. However, because the survey is anonymous, once you click the submit button at the end of the survey the researchers will not be able to determine which survey answers belong to you, so your information cannot be withdrawn after that point.  </h6>
+
+        <h6 class="section-information"> By clicking “I agree” below you are indicating that: </h6>
+        <h6 style="margin-left:25px" class="section-information">1.  All sections of this consent cover letter have been explained to your satisfaction</h6>
+        <h6 style="margin-left:25px" class="section-information">2.  All of your questions have been fully answered by the researchers </h6>
+        <h6 style="margin-left:25px" class="section-information">3.  You understand the requirements, risks, potential and responsibilities of participating in the research project </h6>
+        <h6 style="margin-left:25px" class="section-information">4.  You understand how your information will be accessed, collected and used </h6>
+        <h6 style="margin-left:25px" class="section-information">5.  By consenting to participate in this study, you do not waive your rights to legal recourse connected to research-related harm </h6>
+
+        <h6  class="section-information">By clicking “I Do Not Agree” you may still proceed to the site, but your data will not be collected even if you click the “submit” button at the end of the survey. You are free to skip any question that you choose. Please print a copy of this page for your records.</h6> <br>
+
+
+        <a href="#" class="close-button">I Agree</a>
+        <a href="#" class="close-button">I Do Not Agree</a>
+        </div>
+    </div>
+
+
+
+    <div style="overflow:hidden" id="overlay" class="cover blur-in content"> 
         <div id ="introduction" class="container">
             <h1>What is the Environmental Impact of your CaRMS Tour?</h1>
             <h5>This calculator assesses the emissions from flights taken during the Canadian residency interview tour</h5>
@@ -56,28 +178,28 @@
                 </g>
                 </svg>
             </div>
-
             <form method="post" action="" id="sort-it" onsubmit="return false;">
                 <h2 class ="control-label mb-5" for="autocomplete">
-                    I'm starting my CaRMS Tour from
+                    I started my CaRMS © interview tour from
                 </h2>
                 <div class="form-group">
-                    <input id="autocomplete" class="form-control" type="text" name="dep-city" placeholder="City or Airport Name ..." autocomplete="off" autofocus="on" />
+                    <input id="autocomplete" class="form-control" type="text" name="dep-city"placeholder="Please enter city or or airport name" autocomplete="off" autofocus="on" />
+                    <div style="float:right" class="form-group">
+                        <select id="journeytype" class="form-control" name="journeytype" style="display: none;">
+                            <option value="1" selected="">Flying</option>
+                            <option value="0">Not Flying</option>
+                        </select>
                 </div>
-                <div class="form-group">
-                    <select id="journeytype" class="form-control" name="journeytype" style="display: none;">
-                        <option value="1" selected="">Flying</option>
-                        <option value="0">Not Flying</option>
-                    </select>
                 </div>
+           
                 <button type="button" class="btn btn-primary" id="addbutton">Add</button>
                 <ul id="incomplete-tasks" class="mt-5"></ul>
                 <div class="clearfix"></div>
                 <button type="button" class="btn btn-primary mt-4" id="calculate" style="display: none;">Calculate My Emissions</button>
             </form>
         </div>
-        <div class="clearfix"></div>
-        <div id="emission-data" style="display:none">
+        <div class="clearfix" ></div>
+        <div id="emission-data" style="display:none;">
             <div class="container p-5">
             <div id="infographic">
          
@@ -101,67 +223,11 @@
                         <div class="col-sm">
                         <h1 class="mileage__calculations mt-5" id="co2emission">
                             <span id = "totalEmission" data-emission=""></span>
-                            <small style="font-size:20px"> Kg CO2 Emitted</small>
+                            <small style="font-size:20px">Tonnes of CO2 Emitted</small>
                         </h1>
                         </div>
                     </div>
                 </div>
-                <div id="container">
-                <div id="data">
-               
-               
-                <table style="display:none" id="datasource">
-                    <tr>
-                        <th id="td1_1">&nbsp;</th>
-                        <th id="td1_2">2009</th>
-                        <th id="td1_3">2010</th>
-                    </tr>
-                    <tr>
-                        <th id="td2_1">User's Emission</th>
-                        <td id="td2_2"></td>
-                    </tr>
-                    <tr>
-                        <th id="td3_1">Average Canadian Emission</th>
-                        <td id="td3_2">22000</td>
-                    </tr>
-                    <tr>
-                        <th id="td4_1">Foreign Aid</th>
-                        <td id="td4_2">30.2</td>
-                        <td id="td4_3"></td>
-                    </tr>
-                </table>
-            </div>
-            
-                <div id="barcharts">
-                    <div id="chart1label">
-                    </div>
-                    <div id="chart1">
-                        <div id="chart1_bar1" class="women"> <div class="label" id="averageEmission"><h5>Average Yearly Canadian Emission</h5></div>
-                        </div>
-        
-                        <div id="chart1_bar2" class="men"> <div class="label" id="yourEmission"><h5>Trip's Emission</h5></div> </div>
-                        
-
-                    </div>
-                    <div id="percentchange"></div>
-                </div>
-
-
-                <div id="areacharts">
-                    <div id="icecharts"> 
-                    <div id="chart3">
-                        <div id="chart3_area2" class="money">
-                        	 <div id="borderLeft"></div>
-                        	 <div id="borderbottom"></div>
-                            <div class="label" id="icemelt"></div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-
-
-            </div>
-
 
 
         </div>
@@ -176,14 +242,26 @@
                 </form>
             --> 
             <div class="container" style="background-color:#2b5277">
-                <h4 style="margin-top:60px" style= "padding-top:30px">Please help us understand the cost of the entire CaRMS tour</h4>
+                <h4 style="margin:10px; padding-top:30px">Please help us understand the cost of the entire CaRMS tour</h4>
                 <h6>Submit your data </h6>
-                <form class="form mt-5" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSejY5ykx9XWxh_UxnaaAFWOpVQJP2Q2bwVNcnINXDnpMMKXRg/formResponse" target="_self">
+                <script type="text/javascript">var submitted=false;</script>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" 
+                        onload="
+                        if(submitted){document.getElementById('thankyou').style.display='block';}">
+                    
+                </iframe>
+
+                <form class="form mt-5" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSejY5ykx9XWxh_UxnaaAFWOpVQJP2Q2bwVNcnINXDnpMMKXRg/formResponse" target="hidden_iframe" onsubmit="submitted=true;">
                     <div class="form-group">
-                        <label>I am from</label>
-                        <input id="schooloforigin" name="entry.735375071" type="text" placeholder=" Medical School Name"/>
-                        <label>I am applying to the following specialty(ies)</label>
-                        <input id="specialties" name="entry.1179383716" placeholder=" Specialty(ies)" type="text" />
+                        <label>I study at:</label>
+                        <input id="schooloforigin" name="entry.735375071" size="35" type="text" placeholder="  Please enter name of medical school "/>
+                        <br>
+                        <input type="checkbox"> Decline to Answer<br>
+                        <br>
+                        <label>I am applying to:</label>
+                        <input id="specialties" name="entry.1179383716"size="35" placeholder="  Please enter the specialty(ies) you applied to" type="text" />
+                        <br>
+                        <input type="checkbox"> Decline to Answer<br>
                         
                         <input id="city0" name="entry.599602472"  style="display:none"  type="text" />
                         <input id="city1" name="entry.589350821"  style="display:none"  type="text" />
@@ -219,8 +297,16 @@
                         <input id="city29" name="entry.324442649"  style="display:none"  type="text" />
                     
                     </div>
+                        <h6 style="font-size:15px; text-align: left; margin-top:2%"> Please note, because the survey is anonymous, once you click the submit button at the end of the survey the researchers will not be able to determine which survey answers belong to you, so your information cannot be withdrawn after that point. 
+
+                        Your information only will only be collected if you selected the “I agree” button at the consent cover letter. </h6>
+        
                         <input type="submit" value="Submit"/>
                 </form>
+            </div>
+            <div id="thankyou" class="container" style="display:none; background-color:#2b5277">
+                <h1>Thank you!</h1>
+
             </div>
 
             </div>
@@ -228,6 +314,7 @@
 
 
         </div>
+    </div>
 
        
 
@@ -253,9 +340,8 @@
         <script src="src/animate.js"></script>
 
         <!-- results --> 
-  
         <script src="src/infographic.js"></script>
-        
+        <script src="src/popup.js"></script>
 
     </body>
 </html>

@@ -324,20 +324,21 @@ map = new Vue({
                 if (marker1 && marker2) {
                     distance = Math.round(this.calcDistance(latLng1[0], latLng1[1], latLng2[0], latLng2[1]));
 
-                    emission = distance * 1.08;
+                    emission = distance;
                     if (emission < 463) {
-                        emission = emission * 0.27867;
+                        emission = emission * 0.25493;
                     } else if (emission > 463 && emission < 3700) {
-                        emission = emission * 0.16508;
+                        emission = emission * 0.15573;
                     } else {
-                        emission = emission * 0.14678;
+                        emission = emission * 0.14981;
                     }
                     totalEmission += emission;
+
 
                     marker1 = marker2, latLng1 = latLng2, marker2 = null, latLng2 = null;
                 }
             }
-            this.emission = Math.round(totalEmission).toFixed();
+            this.emission = totalEmission/1000;
         }
     }
 });

@@ -192,7 +192,7 @@ function updateLabelText() {
         $("#sort-it [for='autocomplete']").text("I'm starting my CaRMS Tour from");
         $("#journeytype").hide();
     } else {
-        $("#sort-it [for='autocomplete']").text("My next city is");
+        $("#sort-it [for='autocomplete']").text("I then travelled to");
         $("#journeytype").show();
     }
     if (map.markers.length > 1) {

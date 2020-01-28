@@ -402,3 +402,15 @@ li > .delete:hover {
     border-color: #fff;
     outline: 0 none;
 }
+
+input::placeholder {
+  color: dimgrey;
+  font-size:15px;
+  width:100%;
+ text-align: left; 
+}
+
+input[type="text"]
+{
+    font-size:15px;
+}
