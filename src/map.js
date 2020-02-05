@@ -137,8 +137,6 @@ map = new Vue({
                 this.airplaneFade = tl;
             }
             this.markerDrag(e);
-            document.addEventListener('mousemove', this.markerDrag);
-            document.addEventListener('mouseup', this.markerStop);
             this.$refs.map.addEventListener('mouseleave', this.markerLeave);
         },
         markerDrag(e) {
@@ -244,18 +242,6 @@ map = new Vue({
                 }
             }
         },
-        airportClick(e, airport) {
-            if (!this.currentMarker) {
-                this.markerSet(e);
-            }
-            this.currentAirport = airport;
-            this.currentMarker.x = this.currentAirport.x;
-            this.currentMarker.y = this.currentAirport.y;
-            if (this.currentMarker) {
-                this.currentMarker.airport = airport;
-            }
-            this.markerDistance();
-        },
         airportLeave(e, airport) {
             airport.current = false;
             this.currentAirport = null;
@@ -338,7 +324,7 @@ map = new Vue({
                     marker1 = marker2, latLng1 = latLng2, marker2 = null, latLng2 = null;
                 }
             }
-            this.emission = totalEmission/1000;
+            this.emission = totalEmission;
         }
     }
 });

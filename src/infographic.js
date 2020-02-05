@@ -1,16 +1,20 @@
 /* Interactive Infographic */
 function runInfographic (){
-	
-		animateValue(objectEmission, 0, objectEmission.innerHTML,1500);
+		
+		console.log(objectEmission.innerText);
+		console.log(map.emission);
+
+		animateValue(objectEmission, 0, map.emission, 1500);
     	animateValue(objectDistance, 0, objectDistance.innerHTML, 1500);
     	animateValue(objectCity, 0, objectCity.innerHTML, 500);
+
+    	document.querySelector("#totalEmission").innerHTML = map.emission
 		// Set the values for the different charts and labels
 
-		console.log(map.emission);
+		
 
 		$("#2009aid").text("$"+$("#td4_2").text()+"m");
 		$("#2010aid").text("$"+$("#td4_3").text()+"m");
-		
 		
 		// Store the values from the table
 	
@@ -74,5 +78,6 @@ function runInfographic (){
 		
 		
 		$("#data").hide();
+		runShamePlane();
 		
 	};

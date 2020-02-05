@@ -113,8 +113,19 @@ addButton.addEventListener("click", function () {
     if (taskInput.value != "") {
         var flyingStatus = document.getElementById("journeytype").value;
         addTask(flyingStatus);
+        console.log(flyingStatus);
+        document.getElementById("autocomplete").focus();
     }
 });
+
+/*addButton.addEventListener("click", function () {
+    if (taskInput.value != "") {
+        var flyingStatus = document.getElementById("exampleRadios1").checked;
+        addTask(flyingStatus);
+        console.log(flyingStatus);
+        document.getElementById("autocomplete").focus();
+    }
+});*/
 
 var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
     console.log("bind list item events");
@@ -165,6 +176,7 @@ calculateButton.addEventListener("click", function () {
         scrollTop: $("#emission-data").position().top
     }, 500);
     runInfographic();
+    drawCharts();
 });
 
 function updateFormData(){
@@ -180,7 +192,9 @@ function updateFormData(){
 function updateEmissionData() {
     $("#distancebetween [data-distance]").text(map.distance);
     map.calculateEmission();
-    $("#co2emission [data-emission]").text(map.emission);
+    document.querySelector("#totalEmission").innerHTML = 0; 
+
+
     document.querySelector("#totalCities").innerHTML = document.querySelector("#incomplete-tasks").childElementCount;
     $("#emission-data").show();
 }

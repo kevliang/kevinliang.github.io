@@ -20,6 +20,32 @@
 			margin-bottom:		10px;
 		}
 
+		#carcharts{ 
+			position: absolute;
+			float: left;
+			top: 50%;
+			left:5%;
+
+		}
+
+		#car {
+			animation-duration: 10s;
+			animation-name: goRight;
+			animation-iteration-count: 1;
+			animation-fill-mode: forwards;
+			-webkit-animation-fill-mode: forwards;
+			margin-top: 100px;
+		}
+
+		@keyframes goRight {
+  			from {
+    			transform: translate(0,0);
+  			}
+
+  			to {
+    			transform: translate( calc( 50vw - 800px ),0);
+  			}
+		}
 		
 		#averageEmission h5{
 			font-size:12px;
@@ -190,7 +216,9 @@
   			left: -1%;
 		}
 
-	
+		#icemelt {
+			color:black;
+		}
 		
 		#attribution {
 			clear:				both;

@@ -5,9 +5,9 @@ function animateValue(obj, start, end, duration) {
         var textStarting = obj.innerHTML;
 
         // remove non-numeric from starting text if not specified
-        end = end || parseInt(textStarting.replace(/\D/g, ""));
+        console.log(end); 
 
-        var range = end - start;
+        var range = end;
 
         // no timer shorter than 50ms (not really visible any way)
         var minTimer = 50;

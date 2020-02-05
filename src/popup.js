@@ -7,6 +7,7 @@ $(function() {
       $('.pop-up').fadeOut(700);
       $('#overlay').removeClass('blur-in');
       $('#overlay').addClass('blur-out');
+      $( "#autocomplete" ).focus();
       e.stopPropagation();
         
     });
