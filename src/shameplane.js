@@ -22,23 +22,23 @@ function changeOPT(e) {
 }
 
 
-const opt1 = document.getElementById("opt1")
+const opt1 = document.getElementById("opt1");
 opt1.addEventListener("change", changeOPT);
 
-const opt2 = document.getElementById("opt2")
+const opt2 = document.getElementById("opt2");
 opt2.addEventListener("change", changeOPT);
 
-const opt3 = document.getElementById("opt3")
-opt3.addEventListener("change", changeOPT);
+//const opt3 = document.getElementById("opt3");
+//opt3.addEventListener("change", changeOPT);
 
-//const opt4 = document.getElementById("opt4")
-//opt4.addEventListener("change", changeOPT);
+const opt4 = document.getElementById("opt4");
+opt4.addEventListener("change", changeOPT);
 
-const opt5 = document.getElementById("opt5")
+const opt5 = document.getElementById("opt5");
 opt5.addEventListener("change", changeOPT);
 
-const opt6 = document.getElementById("opt6")
-opt6.addEventListener("change", changeOPT);
+//const opt6 = document.getElementById("opt6"); 
+//opt6.addEventListener("change", changeOPT);
 
 const opt7 = document.getElementById("opt7")
 opt7.addEventListener("change", changeOPT);
@@ -62,11 +62,6 @@ function addMetaData(from, to, co, toCity) {
             property: "og:description",
             content: "Explore how this trip compares to the efforts you make to reduce your carbon footprint." 
         }]
-    // <meta property="og:url" content="All Hope is Lost">
-    // <meta property="og:title" content="All Hope is Lost">
-    // <meta property="og:description" content="All Hope is Lost">
-    // <meta name="description" content="All Hope is Lost">
-    // <title>Shame Plane</title>
 
     for(i=0; i < tags.length; i++) {
         var meta=document.createElement('meta');

@@ -13,26 +13,16 @@ var addButton = document.getElementById("addbutton");//first button
 var calculateButton = document.getElementById("calculate");//first button
 var incompleteTaskHolder = document.getElementById("incomplete-tasks");//ul of #incomplete-tasks
 
-//location drag & re-arrange
-$("#incomplete-tasks").sortable({
-    scroll: false,
-    update: function (event, ui) {
-        var sortArr = [];
-        $($("#incomplete-tasks li[data-location]")).each(function () {
-            sortArr.push($(this).attr("data-location"));
-        });
-        map.markers.sort(function (a, b) {
-            return sortArr.indexOf(a.airport.LocationID + a.index) - sortArr.indexOf(b.airport.LocationID + b.index);
-        });
-        map.markerDistance();
-        updateLabelText();
-    }
-});
+
 $("#incomplete-tasks").disableSelection();
 
 $("#autocomplete").keydown(function (e) {
     if (e.keyCode == 13) {
         e.preventDefault();
+        //Click on add when enter pressed inside city input
+        if (!$(".autocomplete-results").is(":visible")) {
+            addButton.click();
+        }
     }
 });
 
@@ -50,7 +40,7 @@ var createNewTaskElement = function (taskString, flyingStatus) {
     deleteButton.className = "delete btn";
 
     var deleteIcon = document.createElement("i");
-    deleteIcon.className ="fa fa-trash";
+    deleteIcon.className = "fa fa-trash";
     deleteButton.appendChild(deleteIcon);
     //and appending.
     listItem.appendChild(label);
@@ -85,6 +75,9 @@ var deleteTask = function (e) {
     map.markers.splice(index, 1);
     map.markerDistance();
     updateLabelText();
+    if ($("#incomplete-tasks > li").length == 0) {
+        $("#incomplete-tasks").addClass("d-none");
+    }
 };
 
 //Mark task completed
@@ -111,21 +104,22 @@ var taskIncomplete = function () {
 //Set the click handler to the addTask function.
 addButton.addEventListener("click", function () {
     if (taskInput.value != "") {
-        var flyingStatus = document.getElementById("journeytype").value;
+        var flyingStatus = $("#journeytype [name='journeytype']:checked").val();
         addTask(flyingStatus);
+        $("#incomplete-tasks").removeClass("d-none");
         console.log(flyingStatus);
         document.getElementById("autocomplete").focus();
     }
 });
 
 /*addButton.addEventListener("click", function () {
-    if (taskInput.value != "") {
-        var flyingStatus = document.getElementById("exampleRadios1").checked;
-        addTask(flyingStatus);
-        console.log(flyingStatus);
-        document.getElementById("autocomplete").focus();
-    }
-});*/
+ if (taskInput.value != "") {
+ var flyingStatus = document.getElementById("exampleRadios1").checked;
+ addTask(flyingStatus);
+ console.log(flyingStatus);
+ document.getElementById("autocomplete").focus();
+ }
+ });*/
 
 var bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
     console.log("bind list item events");
@@ -154,7 +148,7 @@ function addMarker($li) {
         startX: airport.x,
         startY: airport.y,
         fill: '#f47825',
-        flying: $('#journeytype').val() == 1,
+        flying: $("#journeytype [name='journeytype']:checked").val() == 1,
         current: true,
         index: map.markers.length
     };
@@ -177,13 +171,14 @@ calculateButton.addEventListener("click", function () {
     }, 500);
     runInfographic();
     drawCharts();
+    updateShamePlane();
 });
 
-function updateFormData(){
-    var i=0;
-    var lengthOfResponse = document.querySelector("#incomplete-tasks").childElementCount;  
-    for(;i<lengthOfResponse;i++){
-        var temp = "#city" + i; 
+function updateFormData() {
+    var i = 0;
+    var lengthOfResponse = document.querySelector("#incomplete-tasks").childElementCount;
+    for (; i < lengthOfResponse; i++) {
+        var temp = "#city" + i;
         document.querySelector(temp).value = document.querySelector("#incomplete-tasks").children[i].children[0].id;
     }
 
@@ -192,8 +187,8 @@ function updateFormData(){
 function updateEmissionData() {
     $("#distancebetween [data-distance]").text(map.distance);
     map.calculateEmission();
-    document.querySelector("#totalEmission").innerHTML = 0; 
-
+    $("#totalEmission[data-emission]").text(parseInt(map.emission));
+//    document.querySelector("#totalEmission").innerHTML = 0;
 
     document.querySelector("#totalCities").innerHTML = document.querySelector("#incomplete-tasks").childElementCount;
     $("#emission-data").show();
@@ -217,14 +212,34 @@ function updateLabelText() {
     }
     if ($("#emission-data").is(":visible")) {
         updateEmissionData();
+        runInfographic();
+        drawCharts();
     }
 }
 
+function animateThankYouMessage() {
+    $("#thankyou").show();
+    $("html, body").stop().animate({scrollTop: $("#thankyou").position().top}, 500);
+}
 
+function updateShamePlane(){ 
+    document.getElementById("opt1").checked=false; 
+    document.getElementById("opt2").checked=false;
+    //document.getElementById("opt3").checked=false; 
+    document.getElementById("opt4").checked=false; 
+    document.getElementById("opt5").checked=false; 
+    //document.getElementById("opt6").checked=false; 
+    document.getElementById("opt7").checked=false; 
 
+    document.getElementById("opt1-bar").classList.remove("on");
+    document.getElementById("opt2-bar").classList.remove("on");
+    //document.getElementById("opt3-bar").classList.remove("on");
+    document.getElementById("opt4-bar").classList.remove("on");
+    document.getElementById("opt5-bar").classList.remove("on");
+    //document.getElementById("opt6-bar").classList.remove("on");
+    document.getElementById("opt7-bar").classList.remove("on");
 
-
-
+}
 
 
 // Issues with usabiliy don't get seen until they are in front of a human tester.

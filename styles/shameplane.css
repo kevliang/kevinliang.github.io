@@ -21,10 +21,6 @@
   --site-width: 75rem;
 }
 
-::-moz-selection { background: var(--color-7); }
-::selection { background: var(--color-7); }
-
-
 @media screen and (max-width: 960px) {
     .city-field-sub, .ice-field-sub{
         top:calc(-.5rem + 1.25vw);
@@ -98,9 +94,10 @@
     padding: 0 .5rem;
     transform: translateX(0);
 }
+
 .opt-bar.on div{
     opacity: 1;
-    transform: translateX(-4rem);
+    transform: translateX(0rem);
 }
 @media screen and (max-width: 760px) {
     .opt-bar.on div{
@@ -216,6 +213,7 @@ input#opt7[type=checkbox]:not(old):checked + label > span{background-color : var
     margin-right: 2vw;
 }
 .checkbox label, .radio label{
+  text-align: left;
 }
 
 @media screen and (max-width: 760px) {

@@ -53,9 +53,17 @@ body {
         top: 40%; left: 0; bottom: 0; right: 0;*/
 }
 
-#journeytype {
+#journeytype input {
     margin-top: 30px;
-    padding-right:30px;
+    width: auto;
+    opacity: 1;
+}
+#journeytype label {
+    margin: 0 1rem 0 0.5rem;
+    padding-top: 0;
+    line-height: 20px;
+    cursor: pointer;
+    vertical-align: text-top;
 }
 
 #autocomplete{
@@ -92,7 +100,7 @@ button {
 }
 
 #addbutton {
-    /*margin-top: 30px;*/
+    margin-top: 15px;
     width: 120px;
 }
 
@@ -150,14 +158,21 @@ li {
     overflow: hidden;
     padding: 20px 0;
     border: none;
+}
 
+#incomplete-tasks > li {
+    border-bottom: 1px solid #34495d;
+}
+#incomplete-tasks > li:last-of-type {
+    border-bottom: 0 none;
 }
 
 li > label {
     font-size: 18px;
     /*line-height: 20px;*/
-    width: 200px;
+    width: 160px;
     padding: 0;
+    text-align: left;
 }
 
 li >  input[type="text"] {
@@ -247,7 +262,6 @@ li > .delete:hover {
 }*/
 
 
-
 .mileage__calculations /* answer */ { 
     margin: 0;
     font-size: 3rem;
@@ -262,8 +276,8 @@ li > .delete:hover {
     display: block;
     width: auto;
     height: 60vh;
-/*    max-width: 90%;
-    max-height: 90%;*/
+    /*    max-width: 90%;
+        max-height: 90%;*/
     margin: auto auto 2rem;
     overflow: visible;
 }
@@ -360,12 +374,13 @@ li > .delete:hover {
 }
 
 #user-input,#emission-data {
-    height: 100vh;
+    /*height: 100vh;*/
     display: inline-block;
 }
 
 #sort-it {
     width: 35vw;
+    margin-bottom: 5px;
 }
 .airplane {
     pointer-events: none;
@@ -379,21 +394,30 @@ li > .delete:hover {
     top: 0;
     padding: 0;
     max-height: 80vh;
-    min-height: 80vh;
     overflow-y: auto;
     overflow-x: hidden;
+    border: 2px solid #4d5d6d;
+    border-radius: 4px;
+    padding: 0 10px;
+    background: #203446;
 }
 #incomplete-tasks .delete {
-    width: 65px;
+    width: 40px;
     margin: 0;
     background: none;
     border: 0px;
-    color: #888;
+    color: #ff0000a1;
     font-size: 20px;
     float: right;
     font-family: sans-serif;
     cursor: pointer;
-    padding:auto;
+    padding: .200rem .75rem .375rem;
+}
+#incomplete-tasks .delete:hover {
+    color: red;
+}
+#incomplete-tasks .delete:focus {
+    box-shadow: none;
 }
 #calculate {
     width: 250px;
@@ -404,13 +428,38 @@ li > .delete:hover {
 }
 
 input::placeholder {
-  color: dimgrey;
-  font-size:15px;
-  width:100%;
- text-align: left; 
+    color: dimgrey;
+    font-size:15px;
+    width:100%;
+    text-align: left;
 }
 
 input[type="text"]
 {
     font-size:15px;
+}
+
+#legend-graph > .column {
+    margin-left: 100px;
+}
+
+#circulargraph .graph > .pc1 {
+    margin: 0 auto;
+}
+#circulargraph .textBox {
+    float: none;
+    width: auto;
+    height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    #circulargraph .textBox {
+        margin-top: 0px !important;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 635px) {
+    #sort-it {
+        width: auto;
+    }
 }

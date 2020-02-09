@@ -1,14 +1,13 @@
 /* Interactive Infographic */
 function runInfographic (){
-		
 		console.log(objectEmission.innerText);
 		console.log(map.emission);
 
-		animateValue(objectEmission, 0, map.emission, 1500);
+        animateValue(objectEmission, 0, objectEmission.innerHTML, 1500);
     	animateValue(objectDistance, 0, objectDistance.innerHTML, 1500);
     	animateValue(objectCity, 0, objectCity.innerHTML, 500);
-
-    	document.querySelector("#totalEmission").innerHTML = map.emission
+        
+//    	document.querySelector("#totalEmission").innerHTML = map.emission;
 		// Set the values for the different charts and labels
 
 		

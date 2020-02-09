@@ -53,7 +53,7 @@ function selectIndex(index) {
     if (results.length >= index + 1) {
         var output = results[index].City + " - " + results[index].LocationID;
         ac.attr("data-airport", JSON.stringify(findMapAirport(results[index].LocationID)));
-        ac.val(output);
+        ac.val(output).focus();
         clearResults();
         $(".autocomplete-results").hide();
     }
