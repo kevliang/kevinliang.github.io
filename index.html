@@ -10,7 +10,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <link rel=icon type=image/png href=images/favicon.ico />
 <link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css integrity=sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T crossorigin=anonymous>
-<link rel=stylesheet type=text/css href=styles/theme.css />
+<link rel=stylesheet type=text/css href=styles/theme.css>
 <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
 <link rel=stylesheet type=text/css href=styles/results.css>
 <link rel=stylesheet type=text/css href=styles/popup.css>
@@ -18,7 +18,7 @@
 <link rel=stylesheet type=text/css href=styles/circlegraph.css>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js></script>
 <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js integrity=sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM crossorigin=anonymous></script>
-<script src=src/jquery-ui.js type=text/javascript></script>
+<script src=src/jquery-ui.js></script>
 </head>
 <body id=top itemtype=http://schema.org/WebPage>
 <div class="row pop-up">
@@ -205,7 +205,7 @@ I'm starting my CaRMS © Tour from
 </svg>
 <div class=row>
 <div class="col-md-4 col-sm-12" style="margin:0 auto">
-<h3 style=font-size:30px>The <span class=callout> carbon emissions </span> of your trip compared to emission reduction by lifestyle changes for <span class=callout>1 year: </span></h3>
+<h3 style=font-size:30px>The <span class=callout> carbon emissions </span> of your trip compared to emission reduction by lifestyle changes for <span class=callout>1 year: </span> <h5>(click the checkboxes)</h5> </h3>
 </div>
 <section class="col-md-8 col-sm-12">
 <div class=big-graph>
@@ -261,7 +261,7 @@ I'm starting my CaRMS © Tour from
 </div>
 <div class="container mt-4" style=background-color:#2b5277>
 <h4 style=margin:10px;padding-top:30px>Please help us understand the cost of the entire CaRMS© tour</h4>
-<script type=text/javascript>var submitted=false;</script>
+<script>var submitted=false;</script>
 <iframe name=hidden_iframe id=hidden_iframe style=display:none onload=if(submitted){animateThankYouMessage();}></iframe>
 <form class="form mt-5" action=https://docs.google.com/forms/u/0/d/e/1FAIpQLSejY5ykx9XWxh_UxnaaAFWOpVQJP2Q2bwVNcnINXDnpMMKXRg/formResponse target=hidden_iframe onsubmit="submitted=true">
 <div class=form-group>
@@ -318,21 +318,32 @@ Your information only will only be collected if you selected the “I agree” b
 </div>
 <script src=src/shameplane.js></script>
 <script src=src/airports.js></script>
-<script src=src/circlegraph.js></script>
+<script>
+function drawCharts(){document.querySelectorAll(".percent-circle").forEach(function(e){var r=map.emission/3910,t=100*r;$(".percent-circle").attr("data-percent",t.toFixed(1).toString());var c=e.offsetWidth,a=Math.ceil(c*Math.PI);if(r<100)var i=Math.ceil(a*r);else i=a;var n=a-i;e.querySelector(".percent-circle-inner").style.strokeDasharray=i+"px "+n+"px"})}
+</script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/d3/4.9.1/d3.min.js></script>
 <script src=https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js></script>
-<script src=src/results.js></script>
+<script>
+function animateValue(e,t,a,n){if(e){var o=e.innerHTML;console.log(a);var r=a,i=Math.abs(Math.floor(n/r));i=Math.max(i,50);var c,l=(new Date).getTime()+n;function m(){var t=(new Date).getTime(),i=Math.max((l-t)/n,0),m=Math.round(a-i*r);e.innerHTML=o.replace(/([0-9]+)/g,m),m==a&&clearInterval(c)}c=setInterval(m,i),m()}}var objectEmission=document.querySelector("#totalEmission"),objectDistance=document.querySelector("#totalDistance"),objectCity=document.querySelector("#totalCities");    
+</script>
 <script src=src/todo.js></script>
-<script src=src/emissions.js></script>
+<script>
+var str=document.querySelector("#distancebetween").innerText,res=Number(str.replace(/\D/g,"")),adjusteddistance=1.609344*res;
+
+</script>
 <script src=src/map.js></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.1/lodash.min.js></script>
 <script src=https://unpkg.com/fuse.js@2.5.0/src/fuse.min.js></script>
-<script type=text/javascript src=src/autocomplete.js></script>
+<script src=src/autocomplete.js></script>
 <script src=https://animejs.com/lib/anime.min.js></script>
-<script src=src/animate.js></script>
+<script>
+function handle_click(e){setTimeout(continue_clicked,100)}function continue_clicked(){hide_trans_summary.play()}document.querySelector("#addbutton").addEventListener("mouseup",handle_click);var hide_trans_summary=anime({opacity:"0",easing:"easeInOutSine",duration:500,begin:function(){},autoplay:!1,complete:function(){translate_button.play()}}),translate_button=anime({targets:document.querySelector("#incomplete-tasks"),translateY:["0","0"],translateX:["0","0"],scale:1,duation:500,autoplay:!1,easing:"easeOutExpo",complete:function(){}});    
+</script>
 <script src=src/infographic.js></script>
-<script src=src/popup.js></script>
+<script>
+$(function(){$(".pop-up").hide(),$(".pop-up").fadeIn(1e3),$(".close-button").click(function(o){$(".pop-up").fadeOut(700),$("#overlay").removeClass("blur-in"),$("#overlay").addClass("blur-out"),$("#autocomplete").focus(),o.stopPropagation()})});
+</script>
 </body>
 </html>

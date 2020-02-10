@@ -192,14 +192,6 @@
     "LocationID": "YYQ"
   },
   {
-    "NAME": "Chambly Airport",
-    "City": "Chambly",
-    "PROV": "QC",
-    "Lng": -73.2947,
-    "Lat": 45.402,
-    "LocationID": "TT2"
-  },
-  {
     "NAME": "Cold Lake Regional Airport",
     "City": "Cold Lake",
     "PROV": "AB",
