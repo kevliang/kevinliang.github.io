@@ -506,3 +506,37 @@ input[type="text"]
         width: auto;
     }
 }
+
+#schooloforigin{
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+#schooloforigin::placeholder {
+    color: white;
+    font-size:15px;
+    width:100%;
+    text-align: left;
+}
+
+#specialties{
+    border: 2px solid white;
+    border-radius: 4px;
+}
+
+#specialties::placeholder {
+    color: white;
+    font-size:15px;
+    width:100%;
+    text-align: left;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 0px 32px;
+  text-decoration: none;
+  margin: 10px 2px;
+  cursor: pointer;
+}

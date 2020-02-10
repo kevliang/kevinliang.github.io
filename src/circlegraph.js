@@ -2,7 +2,7 @@ function drawCharts() {
     var circles = document.querySelectorAll(".percent-circle");
     circles.forEach(function(el) {
       //pull the percentage and turn it into a fraction
-      var percent = map.emission/22000;
+      var percent = map.emission/3910;
       var percentage = percent*100
       $(".percent-circle").attr("data-percent", percentage.toFixed(1).toString());
       //work out the circumference from the width
@@ -10,7 +10,11 @@ function drawCharts() {
 
       var circumference = Math.ceil(diameter * Math.PI);
       //now we have the circumference, we know how long the ouline should be
+      if(percent<100){
       var stroke = Math.ceil(circumference * percent);
+      } else {
+      var stroke = circumference;
+      }
 
       //also workout how long the line doesn't exist for
       var diff = circumference - stroke;

@@ -172,6 +172,7 @@ calculateButton.addEventListener("click", function () {
     runInfographic();
     drawCharts();
     updateShamePlane();
+    document.getElementById("schooloforigin").focus();
 });
 
 function updateFormData() {
@@ -219,7 +220,7 @@ function updateLabelText() {
 
 function animateThankYouMessage() {
     $("#thankyou").show();
-    $("html, body").stop().animate({scrollTop: $("#thankyou").position().top}, 500);
+    $("html, body").stop().animate({scrollTop: $("#thankyou").position().bottom}, 500);
 }
 
 function updateShamePlane(){ 
@@ -238,7 +239,6 @@ function updateShamePlane(){
     document.getElementById("opt5-bar").classList.remove("on");
     //document.getElementById("opt6-bar").classList.remove("on");
     document.getElementById("opt7-bar").classList.remove("on");
-
 }
 
 

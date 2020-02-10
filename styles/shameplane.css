@@ -212,6 +212,7 @@ input#opt7[type=checkbox]:not(old):checked + label > span{background-color : var
     margin: 1rem 0 0;
     margin-right: 2vw;
 }
+
 .checkbox label, .radio label{
   text-align: left;
 }
